@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>党建统计---学习统计</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <link rel="stylesheet" href="./index.css">
+    <script type="text/javascript" src="./jquery-1.8.3.min.js"></script>
+    <script src="./vue.min.js"></script>
+    <script>
+        document.onreadystatechange = time;//当页面加载状态改变的时候执行这个方法.
+
+        var time = setTimeout(function loadingChange() {
+            if (document.readyState == "complete") {//当页面加载状态为完全结束时进入
+                $(".loading_wrap").hide();//当页面加载完成后将loading页隐藏
+                $('body').css({overflow:"auto"})
+            }
+        }, 2000);
+
+        window.onload = function () {
+       //     postApiUrl('http://tuanfeng.ztxywy.net/index.php/api/study/statistics?sess_id=f1dnof6un34igimljl3p76k3d6')
+//            postApiUrl('http://backend.ztx8.com/index.php/api/study/statistics?sess_id=ji796qv50bdt5899126b5sip61')
+        }
+    </script>
+    <style>
+        .loading_wrap {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            z-index: 99;
+        }
+
+        body{
+            overflow-y: hidden;
+        }
+
+        .loading {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto;
+            top: 50%;
+            margin-top: -30px;
+            position: relative;
+            -webkit-animation: load 3s linear infinite;
+        }
+
+        .loading div {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+
+        .loading span {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #99CC66;
+            position: absolute;
+            left: 50%;
+            margin-top: -10px;
+            margin-left: -10px;
+            -webkit-animation: changeBgColor 3s ease infinite;
+        }
+
+        @-webkit-keyframes load {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+            33.3% {
+                -webkit-transform: rotate(120deg);
+            }
+            66.6% {
+                -webkit-transform: rotate(240deg);
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @-webkit-keyframes changeBgColor {
+            0%, 100% {
+                background: #99CC66;
+            }
+            33.3% {
+                background: #FFFF66;
+            }
+            66.6% {
+                background: #FF6666;
+            }
+        }
+
+        .loading div:nth-child(2) {
+            -webkit-transform: rotate(120deg);
+        }
+
+        .loading div:nth-child(3) {
+            -webkit-transform: rotate(240deg);
+        }
+
+        .loading div:nth-child(2) span {
+            -webkit-animation-delay: 1s;
+        }
+
+        .loading div:nth-child(3) span {
+            -webkit-animation-delay: 2s;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="webLeft"></div>
+<!--loading-->
+<div class="loading_wrap">
+    <div class="loading">
+        <div><span></span></div>
+        <div><span></span></div>
+        <div><span></span></div>
+    </div>
+</div>
+
+<!--main start-->
+<div id="g_web" class="g_web g_web_padding" style="background:#f5f5f5;position: relative">
+    <div class="div" style="width: 100%;height: 380px">
+        <div class="head">
+            <div class="text">学习数量统计</div>
+            <a href="javascript:;" class="more">详情</a>
+        </div>
+        <div class="inbox">
+            <div class="imgbox">
+                <img src="学习总数@2x.png" alt="">
+            </div>
+            <div class="num">
+                <div class="title">学习总数</div>
+                <div class="num-N" id="setdNum"></div>
+            </div>
+        </div>
+        <div class="inbox">
+            <div class="imgbox">
+                <img src="本月学习@2x.png" alt="">
+            </div>
+            <div class="num">
+                <div class="title">本月学习</div>
+                <div class="num-N" id="setNum"></div>
+            </div>
+        </div>
+        <div style="clear: both"></div>
+        <div id="div" style="width: 100%;height: 200px">
+        </div>
+    </div>
+    <div class="div" style="width: 100%;height: 240px">
+        <div class="head">
+            <div class="text">学习阅读统计</div>
+        </div>
+        <div style="clear: both"></div>
+        <div id="div1" style="width: 100%;height: 200px">
+        </div>
+    </div>
+    <div class="div" style="width: 100%;height: 230px">
+        <div class="head">
+            <div class="text">学习阅读排名</div>
+        </div>
+        <table class="main_content">
+            <thead>
+            <tr>
+                <th width="20%">排名</th>
+                <th width="50%" style="text-align: left">标题</th>
+                <th width="30%">学习人数</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="item" v-for="(item,index) in items">
+                <td width="20%"><img v-bind:src="'./'+index+'.png'" alt="" class="imgIcon"></td>
+                <td width="50%" style="text-align: left">{{item.title}}</td>
+                <td width="30%" style="text-align: center">{{item.views}}</td>
+            </tr>
+            </tbody>
+            <tr class="list">
+                <td colspan="3">
+                    <div>
+                        <span>暂无符合条件的数据记录</span>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="webRight"></div>
+<script src="./echarts.common.min.js"></script>
+<script>
+
+
+    function postApiUrl(url) {
+
+
+        var arr = [];
+        var arr1 = [];
+        var read_arr = [];
+        var a;
+        var readmember;
+        var unreadmember;
+        var more=document.getElementsByClassName('more')[0];
+        $.ajax({
+            url: url,  //请求路径
+            dataType: 'json',  //请求数据
+            method: 'get',   //请求方法
+            async: false,   //是否异步
+            data: '', //返回后台的数据
+            success: function (data) {
+                console.log(data)
+                var _this = data.data;
+                _this.count = _this.count || 0;
+                _this.new_nums = _this.new_nums || 0;
+                //12个月公告发布量
+                if(_this.month_data){
+                    for (var i = 0; i < _this.month_data.length; i++) {
+                        arr.push(_this.month_data[i].month + "月");
+                        arr1.push(_this.month_data[i].nums);
+                    }
+                }
+                else{
+                    arr=["01月","02月","03月","04月","05月","06月","07月","08月","09月","10月","11月","12月"];
+                    arr1=[]
+                }
+
+                //学习总数
+                $("#setdNum").html(_this.count);
+                //本月学习
+                $("#setNum").html("+" + _this.new_nums);
+                //学习阅读排名
+                a = _this.top_three;
+                if(_this.top_three){
+                    $('.list').css({display:"none"})
+                }
+                else{
+                    $('.item').css({display:'none'})
+//                    $('.list').css({display:"none"})
+                }
+                //学习阅读统计
+
+                    var read = (Number(_this.study.views) / (Number(_this.study.views) + Number(Math.abs(_this.study.no_views))) * 100);
+                    var unread = (Math.abs(_this.study.no_views) / (Number(_this.study.views) + Number(Math.abs(_this.study.no_views))) * 100);
+                    var readbaifenbi = read.toFixed(2) + '%';
+                    var unreadbaifenbi = unread.toFixed(2) + '%';
+                    readmember = Number(_this.study.views);
+                    unreadmember = Number(Math.abs(_this.study.no_views));
+                    read_arr.push('学习已读次数：' + readmember + "次" + "，" + readbaifenbi, '学习未读次数：' + unreadmember + '次' + "，" + unreadbaifenbi);
+
+
+
+                //详情
+                if(_this.level==1){
+                    more.setAttribute('href','./more_study.html');
+                }
+                else if(_this.level==2){
+                    more.setAttribute('href','./article_study.html');
+                }
+                else if(_this.level==3){
+                    more.style.display="none"
+                }
+            },
+            error: function (msg) {
+                console.log(msg)
+            },
+            fail: function () {
+                console.log("请求失败")
+            }
+        });
+
+
+        var div = _$('#div'),
+            div1 = _$('#div1');
+
+        var option = {
+            title: {
+                text: '2017年各月学习发布量',
+                x: 'center'
+            },
+            color: ['#67bc3f'],
+            tooltip: {},
+            xAxis: {
+                data: arr,
+                splitLine: {
+                    lineStyle: {
+                        color: '#e5e5e5'
+                    }
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#888'
+                    }
+                }
+            },
+            yAxis: {
+                minInterval:1,
+                splitLine: {
+                    lineStyle: {
+                        color: '#e5e5e5'
+                    }
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#888'
+                    }
+                }
+            },
+            series: [{
+                name: '学习发布量',
+                type: 'bar',
+                barWidth: '8%',
+                data: arr1
+            }]
+        };
+        var option3 = {
+            title: {
+                text: '学习阅读比',
+                x: 'center',
+                y: '52%',
+                itemGap: 20,
+                textStyle: {
+                    color: '#8d8d8d',
+                    fontFamily: '微软雅黑',
+                    fontSize: 15,
+                    fontWeight: 'bolder'
+                }
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b}",
+                confine: true
+            },
+            legend: {
+                orient: 'vertical',
+                x: 10,
+                itemGap: 10,
+                data: read_arr
+            },
+            textStyle: {
+                fontSize: 13
+            },
+            series: [
+                {
+                    name: '学习阅读比',
+                    type: 'pie',
+                    radius: ['45%', '70%'],
+                    center: ['50%', '60%'],
+                    avoidLabelOverlap: false,
+                    label: {
+                        normal: {
+                            show: false,
+                            position: 'center'
+                        }
+                    },
+                    labelLine: {
+                        normal: {
+                            show: false
+                        }
+                    },
+                    data: [
+                        {value: readmember, name: read_arr[0]},
+                        {value: unreadmember, name: read_arr[1]}
+                    ]
+                }
+            ]
+        };
+
+
+        // 使用刚指定的配置项和数据显示图表。
+        div.setOption(option);
+        div1.setOption(option3);
+
+        div.resize();
+        div.showLoading();
+        div1.resize();
+        div1.showLoading();
+
+        setTimeout(function () {
+            div.hideLoading();
+            div1.hideLoading();
+        }, 2000);
+
+        function _$(str) {
+            return echarts.init(document.querySelector(str))
+        }
+
+        new Vue({
+            el: ".main_content",
+            data: {
+                items: a
+            }
+        })
+
+    }
+</script>
+
+</body>
+
+</html>

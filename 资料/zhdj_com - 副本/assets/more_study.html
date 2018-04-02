@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>党建统计---党员学习统计详情</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <link rel="stylesheet" href="./index.css">
+    <script type="text/javascript" src="./jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="./ajax.js"></script>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="./vue.min.js"></script>
+    <script>
+        document.onreadystatechange = time;//当页面加载状态改变的时候执行这个方法.
+
+        var time = setTimeout(function loadingChange() {
+            if (document.readyState == "complete") {//当页面加载状态为完全结束时进入
+                $(".loading_wrap").hide();//当页面加载完成后将loading页隐藏
+                $('body').css({overflow:"auto"})
+            }
+        }, 2000);
+        window.onload = function () {
+        //    more_test('http://tuanfeng.ztxywy.net/index.php/api/study/get_under?id=1')
+        }
+    </script>
+    <style>
+        .loading_wrap {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            z-index: 99;
+        }
+
+        body{
+            overflow-y: hidden;
+        }
+
+        .loading {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto;
+            top: 50%;
+            margin-top: -30px;
+            position: relative;
+            -webkit-animation: load 3s linear infinite;
+        }
+
+        .loading div {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+
+        .loading span {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #99CC66;
+            position: absolute;
+            left: 50%;
+            margin-top: -10px;
+            margin-left: -10px;
+            -webkit-animation: changeBgColor 3s ease infinite;
+        }
+
+        @-webkit-keyframes load {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+            33.3% {
+                -webkit-transform: rotate(120deg);
+            }
+            66.6% {
+                -webkit-transform: rotate(240deg);
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @-webkit-keyframes changeBgColor {
+            0%, 100% {
+                background: #99CC66;
+            }
+            33.3% {
+                background: #FFFF66;
+            }
+            66.6% {
+                background: #FF6666;
+            }
+        }
+
+        .loading div:nth-child(2) {
+            -webkit-transform: rotate(120deg);
+        }
+
+        .loading div:nth-child(3) {
+            -webkit-transform: rotate(240deg);
+        }
+
+        .loading div:nth-child(2) span {
+            -webkit-animation-delay: 1s;
+        }
+
+        .loading div:nth-child(3) span {
+            -webkit-animation-delay: 2s;
+        }
+
+    </style>
+</head>
+<body>
+<div class="webLeft"></div>
+<!--loading-->
+<div class="loading_wrap">
+    <div class="loading">
+        <div><span></span></div>
+        <div><span></span></div>
+        <div><span></span></div>
+    </div>
+</div>
+<!--main start-->
+<div id="g_web" class="g_web g_web_padding" style="background:#f5f5f5;position: relative">
+    <div class="div" style="width: 100%;height:130px" v-for="item in items">
+        <div class="head title_more">
+            <div class="text" style="margin-left:23px">{{item.name}}</div>
+            <a href="javascript:;" class="area_more">下辖地区
+            <i class="fa fa-angle-right"></i>
+            </a>
+        </div>
+        <table class="table_box" border="0">
+            <thead>
+            <tr>
+                <th width="33%">学习总数</th>
+                <th width="33%">今年新增</th>
+                <th width="33%">已学比例</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td width="33%">{{item.count?item.count:0}}</td>
+                <td width="33%">{{item.new?item.new:0}}</td>
+                <td width="33%">{{item.new_ratio?item.new_ratio:0+"%"}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="webRight"></div>
+</body>
+</html>
+<script>
+    function more_test(url) {
+        var areaMore=document.getElementsByClassName('area_more');
+        var items;
+        ajax({
+            url:url,  //请求路径
+            dataType: 'json',  //请求数据
+            method: 'get',   //请求方法
+            async: false,   //是否异步
+            data: '', //返回后台的数据
+            success: function (data) {
+                console.log(data)
+                items=data.data;
+                new Vue({
+                    el:".g_web",
+                    data:{
+                        items:items
+                    }
+                });
+                for(var i=0;i<areaMore.length;i++ ){
+                    areaMore[i].href="./article_study.html?party_id=" + data.data[i].id;
+                }
+
+            },
+            error: function (msg) {
+                console.log(msg)
+            },
+            fail: function () {
+                console.log("请求失败")
+            }
+        })
+    }
+
+
+
+</script>

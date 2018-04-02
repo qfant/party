@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>党建统计---党员统计</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <link rel="stylesheet" href="./index.css">
+    <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+    <script>
+        document.onreadystatechange = time;//当页面加载状态改变的时候执行这个方法.
+
+        var time = setTimeout(function loadingChange() {
+            if (document.readyState == "complete") {//当页面加载状态为完全结束时进入
+                $(".loading_wrap").hide();//当页面加载完成后将loading页隐藏
+                $('body').css({overflow:"auto"})
+            }
+        }, 2000);
+
+         window.onload = function () {
+    //   postPartyMemberData('http://tuanfeng.ztxywy.net/index.php/api/member/statistics?sess_id=bauru1kq4d592sfcmt0tc3mjq5');
+//            postPartyMemberData('http://backend.ztx8.com/index.php/api/member/statistics?sess_id=if2ute3gjb95db00gvu2f6e8v6')
+        }
+
+
+    </script>
+
+    <style>
+        .man, .lady {
+            font-size: 12px;
+            overflow: hidden;
+        }
+
+        .loading_wrap {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            z-index: 99;
+        }
+
+        body{
+            overflow-y: hidden;
+        }
+
+        .loading {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto;
+            top: 50%;
+            margin-top: -30px;
+            position: relative;
+            -webkit-animation: load 3s linear infinite;
+        }
+
+        .loading div {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+
+        .loading span {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #99CC66;
+            position: absolute;
+            left: 50%;
+            margin-top: -10px;
+            margin-left: -10px;
+            -webkit-animation: changeBgColor 3s ease infinite;
+        }
+
+        @-webkit-keyframes load {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+            33.3% {
+                -webkit-transform: rotate(120deg);
+            }
+            66.6% {
+                -webkit-transform: rotate(240deg);
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @-webkit-keyframes changeBgColor {
+            0%, 100% {
+                background: #99CC66;
+            }
+            33.3% {
+                background: #FFFF66;
+            }
+            66.6% {
+                background: #FF6666;
+            }
+        }
+
+        .loading div:nth-child(2) {
+            -webkit-transform: rotate(120deg);
+        }
+
+        .loading div:nth-child(3) {
+            -webkit-transform: rotate(240deg);
+        }
+
+        .loading div:nth-child(2) span {
+            -webkit-animation-delay: 1s;
+        }
+
+        .loading div:nth-child(3) span {
+            -webkit-animation-delay: 2s;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="webLeft"></div>
+
+<!--loading-->
+<div class="loading_wrap">
+    <div class="loading">
+        <div><span></span></div>
+        <div><span></span></div>
+        <div><span></span></div>
+    </div>
+</div>
+
+<!--main start-->
+<div id="g_web" class="g_web g_web_padding wrap" style="background:#f5f5f5;position: relative">
+    <!--内容-->
+    <div class="div" style="width: 100%;height: 380px">
+        <div class="head">
+            <div class="text">党员人数统计</div>
+            <a href="javascript:;" class="more">详情</a>
+        </div>
+        <div class="inbox">
+            <div class="imgbox">
+                <img src="现有党员@2x.png" alt="">
+            </div>
+            <div class="num">
+                <div class="title">现有党员</div>
+                <div class="num-N" id="setdNum"></div>
+            </div>
+        </div>
+        <div class="inbox">
+            <div class="imgbox">
+                <img src="党员新增@2x.png" alt="">
+            </div>
+            <div class="num">
+                <div class="title">今年新增</div>
+                <div class="num-N" id="setNum"></div>
+            </div>
+        </div>
+        <div style="clear:both"></div>
+        <div id="div" style="width: 100%;height: 200px">
+        </div>
+    </div>
+    <div class="div" style="width: 100%;height: 150px">
+        <div class="head">
+            <div class="text">党员性别统计</div>
+        </div>
+        <div class="sexwrap">
+
+
+            <div class="sex">
+                <p style="float: left">男性：<span style="color: #2075df" class="man"></span></p>
+                <p style="float: right">女性：<span style="color: #f47a3a" class="lady"></span></p>
+            </div>
+
+            <div style="clear: both"></div>
+
+            <div class="man_width" style="height: 30px;background: #2075df;float: left;color: white">
+                <img src="男@2x.png" alt="" style="height:80%;padding: 3px 0 2px 5%;float: left">
+                <p style="text-align: right;margin-right: 5px;overflow: hidden" class="man"></p>
+            </div>
+            <div class="lady_width" style="height: 30px;background:#f47a3a;float: right;color: white;overflow: hidden">
+                <img src="女@2x.png" alt="" style="height:80%;padding: 3px 0 2px 5%;float: left">
+                <p style="text-align: right;margin-right: 5px" class="lady"></p>
+            </div>
+        </div>
+    </div>
+    <div class="div" style="width: 100%;height: 220px">
+        <div class="head">
+            <div class="text">党员学历统计</div>
+        </div>
+        <div style="clear:both"></div>
+        <div id="div2" style="width: 100%;height: 200px">
+        </div>
+    </div>
+    <div class="div" style="width: 100%;height: 300px">
+        <div class="head">
+            <div class="text">党员统计</div>
+        </div>
+        <div style="clear:both"></div>
+        <div id="div3" style="width: 100%;height: 250px">
+        </div>
+    </div>
+</div>
+<div class="webRight"></div>
+<script src="./echarts.common.min.js"></script>
+<script>
+
+
+    function postPartyMemberData(url) {
+
+
+        var year_num;
+        var member_num;
+        var arr = [];
+        var arr1 = [];
+        var age_arr = [];
+        var member_arr = [];
+        var more = document.getElementsByClassName('more')[0];
+
+        $.ajax({
+            url: url,  //请求路径
+            dataType: 'json',  //请求数据
+            method: 'get',   //请求方法
+            async: false,   //是否异步
+            data: '', //返回后台的数据
+            success: function (data) {
+                console.log(data);
+                var _this = data.data;
+                _this.count = _this.count || 0;
+                _this.new_nums = _this.new_nums || 0;
+                //现有党员
+                $("#setdNum").html(_this.count);
+                //今年新增
+                $("#setNum").html("+" + _this.new_nums);
+                //党员人数统计
+                year_num = (Object.keys(_this.five_num));
+
+                function transform(obj) {
+                    var value_arr = [];
+                    for (var value_item in obj) {
+                        value_arr.push(obj[value_item]);
+                    }
+                    return value_arr;
+                }
+
+                if (transform(_this.five_num)) {
+                    member_num = (transform(_this.five_num));
+                }
+                else {
+                    member_num = []
+                }
+
+                //学员学历统计
+                if (_this.education_nums) {
+                    for (var i = 0; i < _this.education_nums.length; i++) {
+                        arr.push(_this.education_nums[i].education);
+                        arr1.push(_this.education_nums[i].nums);
+                    }
+
+                }
+                else {
+                    arr = ["小学", "初中", "高中", "大学", "大专", "硕士", "博士"];
+                    arr1 = []
+                }
+
+                //党员统计
+                if (_this.age_data) {
+                    for (var j = 0; j < _this.age_data.length; j++) {
+                        age_arr.push(_this.age_data[j].nnd);
+                        member_arr.push(_this.age_data[j].nums)
+                    }
+                }
+                else {
+                    age_arr = ["20岁以上", "20~30", "31~40", "41~50", "51~60", "61~70", "70以上"];
+                    member_arr = []
+                }
+
+                //党员性别统计
+                $(".man").html((Number(_this.sex_ratio[0].percent).toFixed(2)) * 100 + "%");
+                $(".lady").html((Number(_this.sex_ratio[1].percent).toFixed(2)) * 100 + "%");
+                $(".man_width").animate({width: (Number(_this.sex_ratio[0].percent).toFixed(2)) * 100 + "%"}, 1000);
+                $(".lady_width").animate({width: (Number(_this.sex_ratio[1].percent).toFixed(2)) * 100 + "%"}, 1000);
+
+
+                //详情
+
+                if (_this.level == 1) {
+                    more.setAttribute('href', './more_member.html');
+                }
+                else if (_this.level == 2) {
+                    more.setAttribute('href', './article_member.html');
+                }
+                else if (_this.level == 3) {
+                    more.style.display = "none"
+                }
+
+            },
+            error: function (msg) {
+                console.log(msg)
+            },
+            fail: function () {
+                console.log("请求失败")
+            }
+        });
+
+
+        var div = _$('#div'),
+            div2 = _$('#div2'),
+            div3 = _$('#div3');
+
+        var option = {
+            color: ['#3398DB'],
+            tooltip: {
+                formatter: '{a0}<br/>{b0}：{c0}人'
+            },
+            xAxis: {
+                type: 'category',
+                data: arr,
+                splitLine: {
+                    lineStyle: {
+                        color: 'rgba(0,0,0,0)'
+                    }
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#888'
+                    }
+                }
+            },
+            yAxis: {
+                type: 'value',
+                minInterval: 1,
+                splitLine: {
+                    lineStyle: {
+                        color: 'rgba(0,0,0,0)'
+                    }
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#888'
+                    }
+                }
+            },
+            series: [{
+                name: '学员学历',
+                type: 'bar',
+                barWidth: '50%',
+                data: arr1
+            }]
+        };
+
+        var option1 = {
+            title: {
+                text: '2012~2017年党员人数统计',
+                x: 'center',
+                borderColor: 'black'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    label: {
+                        backgroundColor: '#6a7985'
+                    }
+                },
+                formatter: '{a0}<br/>{b0}年：{c0}人'
+            },
+            legend: {
+                data: []
+
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true,
+                borderWidth: 1,
+                borderColor: '#ccc'
+            },
+            xAxis: [{
+                type: 'category',
+                boundaryGap: false,
+                data: year_num,
+                splitLine: {
+                    lineStyle: {
+                        color: '#e5e5e5'
+                    }
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#888'
+                    }
+                }
+            }],
+            yAxis: [{
+                type: 'value',
+                minInterval: 1,
+                splitLine: {
+                    lineStyle: {
+                        color: '#e5e5e5'
+                    }
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#888'
+                    }
+                }
+            }],
+            series: [{
+                name: '党员人数',
+                type: 'line',
+                stack: '总量',
+                areaStyle: {
+                    normal: {}
+                },
+                data: member_num
+            }
+            ]
+        };
+
+        var option2 = {
+            color: ['#3cb453'],
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'line'        // 默认为直线，可选为：'line' | 'shadow'
+                },
+                formatter: '{a0}<br/>{b0}岁数：{c0}人'
+            },
+            legend: {
+                data: []
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'value',
+                splitLine: {
+                    lineStyle: {
+                        color: 'rgba(0,0,0,0)'
+                    }
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#888'
+                    }
+                }
+            },
+            yAxis: {
+                type: 'category',
+                minInterval: 1,
+                data: age_arr,
+                splitLine: {
+                    lineStyle: {
+                        color: 'rgba(0,0,0,0)'
+                    }
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#888'
+                    }
+                }
+            },
+            series: [
+                {
+                    name: '党员年龄',
+                    type: 'bar',
+                    barWidth: '40%',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'insideRight'
+                        }
+                    },
+                    data: member_arr
+                }
+            ]
+        };
+
+
+        // 使用刚指定的配置项和数据显示图表。
+        div2.setOption(option);
+        div.setOption(option1);
+        div3.setOption(option2);
+
+        div.resize();
+        div.showLoading();
+        div2.resize();
+        div2.showLoading();
+        div3.resize();
+        div3.showLoading();
+        setTimeout(function () {
+            div.hideLoading();
+            div2.hideLoading();
+            div3.hideLoading();
+        }, 2000);
+
+
+        function _$(str) {
+            return echarts.init(document.querySelector(str))
+        }
+
+
+    }
+</script>
+
+</body>
+
+</html>
