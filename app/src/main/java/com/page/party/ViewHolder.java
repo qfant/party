@@ -1,4 +1,4 @@
-package com.page.home.qact;
+package com.page.party;
 
 import android.content.Context;
 import android.view.View;
@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.utils.imageload.ImageLoad;
-import com.page.home.qact.model.NewsResult.NewsData.NewsItem;
+import com.page.party.model.NewsResult.NewsData.NewsItem;
 import com.qfant.wuye.R;
 
 import butterknife.BindView;

@@ -1,4 +1,4 @@
-package com.page.home.activity;
+package com.page.party;
 
 import android.content.Context;
 import android.content.Intent;
@@ -69,12 +69,7 @@ public class QpListFragment extends BaseFragment implements SwipRefreshLayout.On
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        setTitleBar("随手拍", false, "我的", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                qStartActivity(QuickPaiActivity.class);
-            }
-        });
+        setTitleBar("党员生活", false);
         setListView();
         tvAddQp.setText(R.string.icon_font_add);
     }

@@ -1,4 +1,4 @@
-package com.page.home.qact;
+package com.page.party;
 
 import android.content.Context;
 import android.content.Intent;
@@ -23,8 +23,8 @@ import com.framework.view.LineDecoration;
 import com.framework.view.pull.SwipRefreshLayout;
 import com.page.community.serve.model.ServeParam;
 import com.page.community.serve.model.ServeResult;
-import com.page.home.qact.model.NewsResult;
-import com.page.home.qact.model.NewsResult.NewsData.NewsItem;
+import com.page.party.model.NewsResult;
+import com.page.party.model.NewsResult.NewsData.NewsItem;
 import com.qfant.wuye.R;
 
 import java.util.ArrayList;

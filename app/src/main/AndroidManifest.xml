@@ -59,11 +59,11 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.page.home.qact.PNewListActivity"
+            android:name="com.page.party.PNewListActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.page.home.qact.PNewsInfoActivity"
+            android:name="com.page.party.PNewsInfoActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity

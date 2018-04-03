@@ -1,4 +1,4 @@
-package com.page.home.qact.model;
+package com.page.party.model;
 
 import com.framework.domain.response.BaseResult;
 

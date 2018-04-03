@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/pub_color_gray_line"
-                app:columnCount="5"
+                app:columnCount="4"
                 app:orientation="horizontal"
                 app:rowCount="2" />
 
@@ -47,6 +47,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
                 android:background="@color/pub_color_gray_line" />
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -58,24 +60,18 @@
                     android:layout_height="16dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="12dp"
+                    android:layout_marginRight="10dp"
                     android:layout_marginTop="10dp"
                     android:background="@color/pub_color_theme" />
 
-                <ViewFlipper
-                    android:id="@+id/flipper"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:autoStart="true"
-                    android:background="@color/pub_color_white"
-                    android:flipInterval="4000"
-                    android:inAnimation="@anim/in"
-                    android:outAnimation="@anim/go" />
+                    android:layout_gravity="center_vertical"
+                    android:text="党员学习"
+                    android:textColor="@color/pub_color_black"
+                    android:textSize="13dp" />
             </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/pub_color_gray_line" />
 
             <com.page.home.view.MRecyclerView
                 android:id="@+id/rv_711_list"

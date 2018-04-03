@@ -1,21 +1,18 @@
-package com.page.home.qact;
+package com.page.party;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayout;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import com.framework.activity.BaseFragment;
-import com.framework.app.AppConstants;
 import com.framework.domain.param.BaseParam;
 import com.framework.net.NetworkParam;
 import com.framework.net.Request;
@@ -25,37 +22,24 @@ import com.framework.rvadapter.click.OnItemClickListener;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
 import com.framework.utils.ArrayUtils;
-import com.framework.utils.DateFormatUtils;
 import com.framework.utils.imageload.ImageLoad;
 import com.framework.view.LineDecoration;
 import com.framework.view.circlerefresh.CircleRefreshLayout;
 import com.framework.view.sivin.Banner;
 import com.framework.view.sivin.BannerAdapter;
-import com.page.community.eventdetails.activity.EventDetailActivity;
-import com.page.community.eventlist.activity.EventListActivity;
-import com.page.community.eventlist.model.EventListParam;
-import com.page.community.eventlist.model.EventListResult;
-import com.page.community.eventlist.model.EventListResult.Data.ActivityList;
-import com.page.community.serve.activity.RepairActivity;
-import com.page.community.serve.activity.ServeActivity;
-import com.page.home.activity.MainTabActivity;
 import com.page.home.activity.TextViewActivity;
 import com.page.home.activity.WebActivity;
-import com.page.home.holder.SMHolder;
 import com.page.home.model.HomeModel;
 import com.page.home.model.LinksParam;
 import com.page.home.model.LinksResult;
 import com.page.home.model.LinksResult.Data.Links;
 import com.page.home.model.NoticeResult;
 import com.page.home.model.NoticeResult.Data.Datas;
-import com.page.home.qact.model.NewsResult;
-import com.page.home.qact.model.NewsResult.NewsData.NewsItem;
+import com.page.party.model.NewsResult;
+import com.page.party.model.NewsResult.NewsData.NewsItem;
 import com.page.home.view.MRecyclerView;
 import com.page.home.view.ModeView;
 import com.page.store.home.model.FoodRecResult;
-import com.page.store.home.model.FoodRecResult.Data.Products;
-import com.page.store.prodetails.activity.ProDetailsActivity;
-import com.page.uc.payfee.activity.PayFeeHistoryActivity;
 import com.qfant.wuye.R;
 
 import java.util.ArrayList;
@@ -63,12 +47,9 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import butterknife.Unbinder;
 
-import static com.page.community.serve.activity.ServeActivity.SERVICEMAP;
 import static com.page.community.serve.activity.ServeActivity.TITLE;
-import static com.page.community.serve.activity.ServerDetailActivity.CLICKMAP;
 
 /**
  * Created by chenxi.cui on 2017/8/13.
