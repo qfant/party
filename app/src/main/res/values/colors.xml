@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#b42031</color>//actionbar color
-    <color name="colorPrimaryDark">#ffffff</color>
+    <color name="colorPrimary">#e0210e</color>//actionbar color
+    <color name="colorPrimaryDark">#e0210e</color>
     <color name="colorAccent">@color/pub_color_gray_666</color>//checkbox check color
     <drawable name="transparent">#00000000</drawable>
     <color name="transparent">#00000000</color>
@@ -34,5 +34,6 @@
     <color name="pub_color_yellow_press">#cc7808</color>
 
     <color name="pub_common_bg">#f5f5f5</color>
+    <color name="pub_color_theme">#e0210e</color>
 
 </resources>

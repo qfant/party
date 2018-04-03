@@ -6,33 +6,24 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.framework.activity.BaseFragment;
 import com.framework.activity.FragmentBackHelper;
-import com.framework.utils.ArrayUtils;
 import com.framework.utils.ShopCarUtils;
-import com.framework.view.tab.TabItem;
 import com.framework.view.tab.TabLayout;
 import com.framework.view.tab.TabView;
+import com.page.home.qact.PHomeFragment;
 import com.page.store.home.fragment.ShopHomeFragment;
 import com.page.store.orderdetails.activity.OrderDetailsActivity;
 import com.qfant.wuye.R;
-import com.page.community.quickpai.activity.AddQPaiActivity;
 import com.page.uc.UserCenterFragment;
 
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 
 /**
@@ -54,7 +45,7 @@ public class MainActivity extends MainTabActivity {
         setContentView(R.layout.pub_activity_mian_layout);
         ButterKnife.bind(this);
         tabLayout = tlTab;
-        addTab("主页", HomeFragment.class, myBundle, R.string.icon_font_home);
+        addTab("智慧党建", PHomeFragment.class, myBundle, R.string.icon_font_home);
         addTab("商城", ShopHomeFragment.class, myBundle, R.string.icon_font_shopping);
         addTab("随手拍", QpListFragment.class, myBundle, R.string.icon_font_camera);
         addTab("购物车", ShoppingCartFragment.class, myBundle, R.string.icon_font_buy_car);

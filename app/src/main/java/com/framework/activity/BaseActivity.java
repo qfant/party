@@ -59,6 +59,7 @@ import com.framework.utils.tuski.Tuski;
 import com.framework.view.QProgressDialogFragment;
 import com.framework.view.SystemBarTintManager;
 import com.framework.view.TitleBar;
+import com.gyf.barlibrary.ImmersionBar;
 import com.igexin.sdk.PushManager;
 import com.igexin.sdk.PushService;
 import com.qfant.wuye.R;
@@ -90,6 +91,7 @@ public abstract class BaseActivity extends FragmentActivity implements
     protected QProgressDialogFragment progressDialog;
 
     public static final int REQUEST_CODE_LOGIN = 4096;
+    private ImmersionBar mImmersionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +107,22 @@ public abstract class BaseActivity extends FragmentActivity implements
         }
         mIsFloat = myBundle.getBoolean("mIsFloat");
         blockTouch = myBundle.getBoolean("blockTouch");
+        setStatusBar();
+    }
+
+    protected void setStatusBar() {
+        mImmersionBar = ImmersionBar.with(this);
+        mImmersionBar
+                .fitsSystemWindows(true)
+                .statusBarColor(R.color.pub_color_theme)
+                .init();
+           //状态栏颜色，不写默认透明色
+//                .statusBarDarkFont(true, 0.2f)
+//                    .navigationBarColor((navBar.navBarColor)) //导航栏颜色，不写默认黑色
+//                    .barColor(navBar.navBarColor) //同时自定义状态栏和导航栏颜色，不写默认状态栏为透明色，导航栏为黑色
+//                    .statusBarAlpha(0.2f)  //状态栏透明度，不写默认0.0f
+//                    .navigationBarAlpha(0.4f)  //导航栏透明度，不写默认0.0F
+
     }
 
     private void setBarTint() {
@@ -114,7 +132,7 @@ public abstract class BaseActivity extends FragmentActivity implements
 
         SystemBarTintManager tintManager = new SystemBarTintManager(this);
         tintManager.setStatusBarTintEnabled(true);
-        tintManager.setStatusBarTintResource(R.color.colorPrimaryDark);
+        tintManager.setStatusBarTintResource(R.color.pub_color_theme);
     }
 
     @TargetApi(19)
@@ -437,6 +455,8 @@ public abstract class BaseActivity extends FragmentActivity implements
         }
         Tuski.clearTuskiesForActivity(this);
         NetworkManager.getInstance().cancelTaskByHandler(mHandler);
+        if (mImmersionBar != null)
+            mImmersionBar.destroy();  //必须调用该方法，防止内存泄漏，不调用该方法，如果界面bar发生改变，在不关闭app的情况下，退出此界面再进入将记忆最后一次bar改变的状态
 
     }
 

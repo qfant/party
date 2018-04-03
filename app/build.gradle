@@ -2,10 +2,10 @@ apply plugin: "com.android.application"
 //apply plugin: 'com.jakewharton.butterknife'
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    buildToolsVersion "26.0.2"
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
-        applicationId "com.qfant.wuye"
+        applicationId "com.qfant.party"
         minSdkVersion 16
         targetSdkVersion 22
         versionCode 1
@@ -125,7 +125,7 @@ android {
 }
 
 dependencies {
-     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(dir: 'libs', include: ['*.jar'])
 
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.android.support:design:25.3.1'
@@ -155,8 +155,9 @@ dependencies {
     //个推
     compile 'com.getui:sdk:2.11.1.0'
 
+    compile 'com.gyf.barlibrary:barlibrary:2.3.0'
+//    compile project(':circlerefresh')
 //-------------------------------------------------------------
-    //weex 依赖 Android SDK version > 23
     compile "com.facebook.fresco:fresco:0.10.0"
 //更新需要
     compile 'com.squareup.okhttp3:okhttp:3.8.1'
@@ -167,10 +168,4 @@ dependencies {
     debugCompile 'com.taobao.android:weex_inspector:0.10.0.5'
     debugCompile 'com.journeyapps:zxing-android-embedded:3.4.0'
 
-// taobao weexsdk
-//    compile 'com.ucar:weex_sdk:1.6@aar'
-
-// ucar weexsdk 拓展
-//    compile 'com.ucar:weexext_sdk:1.0.8@aar'
-//    compile 'com.weexext:imagepicker:1.0.1'
 }

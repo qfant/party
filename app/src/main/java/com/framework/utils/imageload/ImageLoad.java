@@ -2,6 +2,7 @@ package com.framework.utils.imageload;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.text.TextUtils;
 import android.widget.ImageView;
 
 import com.framework.utils.Dimen;
@@ -23,6 +24,10 @@ public class ImageLoad {
     }
 
     public static void loadPlaceholder(Context context, String url, ImageView imageView, int placeholderResId, int errorResId) {
+        if (TextUtils.isEmpty(url)) {
+            imageView.setImageResource(placeholderResId);
+            return;
+        }
         Picasso.with(context)
                 .load(url)
                 .placeholder(placeholderResId)

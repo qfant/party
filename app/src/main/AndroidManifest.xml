@@ -59,6 +59,14 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity
+            android:name="com.page.home.qact.PNewListActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.page.home.qact.PNewsInfoActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait" />
+        <activity
             android:name="com.page.uc.chooseavatar.CropImageViewActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
