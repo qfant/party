@@ -10,6 +10,7 @@ import com.igexin.sdk.PushManager;
 import com.page.home.activity.MainActivity;
 import com.page.uc.LoginActivity;
 import com.page.uc.UCUtils;
+import com.qfant.wuye.R;
 
 
 /**
@@ -20,6 +21,7 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_splash_layout);
         PushManager.getInstance().initialize(this.getApplication(), com.qfant.wuye.push.PushService.class);
 
 //        qStartActivity(LoginActivity.class);
@@ -27,13 +29,13 @@ public class SplashActivity extends BaseActivity {
             @Override
             public void run() {
 //                if (UCUtils.getInstance().isLogin()) {
-                    startMainActivity();
+                startMainActivity();
 //                } else {
 //                    qStartActivity(LoginActivity.class);
 //                }
                 finish();
             }
-        },1);
+        }, 1500);
     }
 
 

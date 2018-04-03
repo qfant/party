@@ -60,6 +60,7 @@ import com.framework.view.QProgressDialogFragment;
 import com.framework.view.SystemBarTintManager;
 import com.framework.view.TitleBar;
 import com.gyf.barlibrary.ImmersionBar;
+import com.gyf.barlibrary.OnKeyboardListener;
 import com.igexin.sdk.PushManager;
 import com.igexin.sdk.PushService;
 import com.qfant.wuye.R;
@@ -115,8 +116,15 @@ public abstract class BaseActivity extends FragmentActivity implements
         mImmersionBar
                 .fitsSystemWindows(true)
                 .statusBarColor(R.color.pub_color_theme)
+                .keyboardEnable(true)  //解决软键盘与底部输入框冲突问题，默认为 false，还有一个重载方法，可以指定软键盘 mode
+                .keyboardMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)  //单独指定软键盘模式
+                .setOnKeyboardListener(new OnKeyboardListener() {    //软键盘监听回调
+                    @Override
+                    public void onKeyboardChange(boolean isPopup, int keyboardHeight) {
+                    }
+                })
                 .init();
-           //状态栏颜色，不写默认透明色
+        //状态栏颜色，不写默认透明色
 //                .statusBarDarkFont(true, 0.2f)
 //                    .navigationBarColor((navBar.navBarColor)) //导航栏颜色，不写默认黑色
 //                    .barColor(navBar.navBarColor) //同时自定义状态栏和导航栏颜色，不写默认状态栏为透明色，导航栏为黑色

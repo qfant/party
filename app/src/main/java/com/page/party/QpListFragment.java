@@ -35,6 +35,7 @@ import com.page.home.model.QpListResult;
 import com.page.home.model.QpListResult.Data.Snapshots;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -72,6 +73,8 @@ public class QpListFragment extends BaseFragment implements SwipRefreshLayout.On
         setTitleBar("党员生活", false);
         setListView();
         tvAddQp.setText(R.string.icon_font_add);
+        List<Snapshots> mock = QpListResult.Data.mock();
+        mAdapter.setData(mock);
     }
 
     @Override
@@ -81,9 +84,9 @@ public class QpListFragment extends BaseFragment implements SwipRefreshLayout.On
     }
 
     private void startRequest(int pager) {
-        QpListParam param = new QpListParam();
-        param.pageNo = pager;
-        Request.startRequest(param, pager, ServiceMap.getSnapshots, mHandler);
+//        QpListParam param = new QpListParam();
+//        param.pageNo = pager;
+//        Request.startRequest(param, pager, ServiceMap.getSnapshots, mHandler);
     }
 
 

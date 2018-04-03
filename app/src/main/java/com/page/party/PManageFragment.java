@@ -84,7 +84,7 @@ public class PManageFragment extends BaseFragment {
         super.onActivityCreated(savedInstanceState);
         setTitleBar("党员管理", false);
         setRefresh();
-        setBanner();
+//        setBanner();
         setModel();
         set711();
     }
@@ -158,10 +158,10 @@ public class PManageFragment extends BaseFragment {
         list.add(new HomeModel("党费缴纳", R.drawable.icon_study_count));
         list.add(new HomeModel("关系转移", R.drawable.icon_dynamic_phase));
         list.add(new HomeModel("关怀申请", R.drawable.icon_party_activity));
-        list.add(new HomeModel("两学一做", R.drawable.icon_partybranch_introduce));
-        list.add(new HomeModel("三会一课", R.drawable.icon_three_affairs));
-        list.add(new HomeModel("民主议事", R.drawable.icon_work_guide));
-        list.add(new HomeModel("主题党日", R.drawable.icon_clear_build));
+        list.add(new HomeModel("两学一做", R.drawable.icon_learn));
+        list.add(new HomeModel("三会一课", R.drawable.icon_meeting));
+        list.add(new HomeModel("民主议事", R.drawable.icon_democracy));
+        list.add(new HomeModel("主题党日", R.drawable.icon_thematic));
 
         for (final HomeModel homeModel : list) {
             ModeView itemView = new ModeView(getContext());
@@ -190,7 +190,7 @@ public class PManageFragment extends BaseFragment {
 
             @Override
             public void bindImage(ImageView imageView, Links bannerModel) {
-                ImageLoad.loadPlaceholder(getContext(), bannerModel.imgurl, imageView, R.drawable.bg_democratic_council, R.drawable.bg_democratic_council);
+                ImageLoad.loadPlaceholder(getContext(), bannerModel.imgurl, imageView, R.drawable.banner, R.drawable.banner);
             }
 
         };

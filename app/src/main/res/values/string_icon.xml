@@ -2,6 +2,8 @@
 <resources>
 
     <string name="icon_font_empty"></string>//返回
+    <string name="icon_font_party">&#xe6c6;</string>//多人
+    <string name="icon_font_manger">&#xe626;</string>//多人
     <string name="icon_font_back">&#xe669;</string>//返回
     <string name="icon_font_add">&#xe638;</string>//十字添加
     <string name="icon_font_home">&#xe9bb;</string>//房子home icon

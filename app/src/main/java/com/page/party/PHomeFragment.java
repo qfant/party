@@ -157,7 +157,7 @@ public class PHomeFragment extends BaseFragment {
 
     private void setModel() {
         ArrayList<HomeModel> list = new ArrayList<>();
-        list.add(new HomeModel("党政公告", R.drawable.icon_party_announcement));
+        list.add(new HomeModel("党政公告", R.drawable.icon_notice));
         list.add(new HomeModel("党建政策", R.drawable.icon_study_count));
         list.add(new HomeModel("党建动态", R.drawable.icon_dynamic_phase));
         list.add(new HomeModel("党建活动", R.drawable.icon_party_activity));
@@ -166,7 +166,7 @@ public class PHomeFragment extends BaseFragment {
         list.add(new HomeModel("办事指南", R.drawable.icon_work_guide));
         list.add(new HomeModel("廉政建设", R.drawable.icon_clear_build));
         list.add(new HomeModel("先锋事迹", R.drawable.icon_employment_entrepreneurship));
-        list.add(new HomeModel("党建地图", R.drawable.icon_partybranch_introduce));
+        list.add(new HomeModel("党建地图", R.drawable.icon_map));
 
         for (final HomeModel homeModel : list) {
             ModeView itemView = new ModeView(getContext());
@@ -195,7 +195,7 @@ public class PHomeFragment extends BaseFragment {
 
             @Override
             public void bindImage(ImageView imageView, Links bannerModel) {
-                ImageLoad.loadPlaceholder(getContext(), bannerModel.imgurl, imageView, R.drawable.bg_democratic_council, R.drawable.bg_democratic_council);
+                ImageLoad.loadPlaceholder(getContext(), bannerModel.imgurl, imageView, R.drawable.banner, R.drawable.banner);
             }
 
         };

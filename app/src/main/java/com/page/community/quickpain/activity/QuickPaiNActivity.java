@@ -63,7 +63,7 @@ public class QuickPaiNActivity extends BaseActivity implements SwipRefreshLayout
         if (myBundle == null) {
             finish();
         }
-        setTitleBar("随手拍详情", true);
+        setTitleBar("详情", true);
         datases.add(new Datas());//占位
         id = myBundle.getString(ID);
         setListView();

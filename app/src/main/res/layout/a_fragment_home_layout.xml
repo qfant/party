@@ -21,8 +21,8 @@
             <com.framework.view.sivin.Banner
                 android:id="@+id/banner"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:background="@drawable/bg_democratic_council"
+                android:layout_height="160dp"
+                android:background="@drawable/banner"
                 app:banner_pageChangeDuration="800"
                 app:banner_pointAutoPlayInterval="3"
                 app:banner_pointContainerBackground="#33000000"
