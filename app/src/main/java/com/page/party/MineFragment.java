@@ -105,8 +105,8 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
     }
 
     private void setData() {
-        tvName.setText("习大大");
-        tvJob.setText("中华人民共和国主席");
+        tvName.setText("王晓霞");
+        tvJob.setText("党支部书记");
         ImageLoad.loadPlaceholder(getContext(), "", imageHead);
     }
 

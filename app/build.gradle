@@ -123,49 +123,51 @@ android {
     }
 
 }
+apply plugin: 'replugin-plugin-gradle'
+
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    compile 'com.android.support:support-v4:25.3.1'
-    compile 'com.android.support:design:25.3.1'
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:cardview-v7:25.3.1'
-    compile 'com.android.support:gridlayout-v7:25.3.1'
-    compile 'com.android.support:recyclerview-v7:25.3.1'
+    implementation 'com.android.support:support-v4:25.3.1'
+    implementation 'com.android.support:design:25.3.1'
+    implementation 'com.android.support:appcompat-v7:25.3.1'
+    implementation 'com.android.support:cardview-v7:25.3.1'
+    implementation 'com.android.support:gridlayout-v7:25.3.1'
+    implementation 'com.android.support:recyclerview-v7:25.3.1'
 
-    compile 'io.reactivex.rxjava2:rxjava:2.1.0'
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    compile 'com.squareup.okhttp3:okhttp:3.8.0'
-    compile 'com.squareup.retrofit2:retrofit:2.3.0'
-    compile 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
-    compile 'com.jakewharton:butterknife:8.6.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'com.squareup.okhttp3:okhttp:3.8.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
+    implementation 'com.jakewharton:butterknife:8.6.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.8.0'
-    compile 'com.alibaba:fastjson:1.2.32'
-    compile 'org.greenrobot:eventbus:3.0.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+    implementation 'com.alibaba:fastjson:1.2.32'
+    implementation 'org.greenrobot:eventbus:3.0.0'
 //左滑删除
-    compile "com.daimajia.swipelayout:library:1.2.0@aar"
-    compile 'com.github.hackware1993:MagicIndicator:1.5.0'
+    implementation "com.daimajia.swipelayout:library:1.2.0@aar"
+    implementation 'com.github.hackware1993:MagicIndicator:1.5.0'
     //banner
-//    compile 'com.xiwenhec:banner:1.0.4'
-    compile 'com.squareup.picasso:picasso:2.5.2'
+//    implementation 'com.xiwenhec:banner:1.0.4'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
 //不包含微信统计
-//    compile 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+//    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
     //个推
-    compile 'com.getui:sdk:2.11.1.0'
+    implementation 'com.getui:sdk:2.11.1.0'
 
-    compile 'com.gyf.barlibrary:barlibrary:2.3.0'
-//    compile project(':circlerefresh')
+    implementation 'com.gyf.barlibrary:barlibrary:2.3.0'
+//    implementation project(':circlerefresh')
 //-------------------------------------------------------------
-    compile "com.facebook.fresco:fresco:0.10.0"
+    implementation "com.facebook.fresco:fresco:0.10.0"
 //更新需要
-    compile 'com.squareup.okhttp3:okhttp:3.8.1'
+    implementation 'com.squareup.okhttp3:okhttp:3.8.1'
     //weex chrome 调试相关 debug 引入
-    debugCompile 'com.google.code.findbugs:jsr305:2.0.1'
-    debugCompile 'com.squareup.okhttp:okhttp:2.3.0'
-    debugCompile 'com.squareup.okhttp:okhttp-ws:2.3.0'
-    debugCompile 'com.taobao.android:weex_inspector:0.10.0.5'
-    debugCompile 'com.journeyapps:zxing-android-embedded:3.4.0'
-
+    debugImplementation 'com.google.code.findbugs:jsr305:2.0.1'
+    debugImplementation 'com.squareup.okhttp:okhttp:2.3.0'
+    debugImplementation 'com.squareup.okhttp:okhttp-ws:2.3.0'
+    debugImplementation 'com.taobao.android:weex_inspector:0.10.0.5'
+    debugImplementation 'com.journeyapps:zxing-android-embedded:3.4.0'
+    implementation 'com.qihoo360.replugin:replugin-plugin-lib:2.2.4'
 }

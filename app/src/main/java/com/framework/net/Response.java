@@ -31,7 +31,7 @@ public final class Response {
                 str = new String(data);
 //                QLog.v("str", "param.ke=" + param.ke);
                 if (param.ke != null) {
-                	str = SecureUtil.decode(str, param.ke);
+//                	str = SecureUtil.decode(str, param.ke);
                 	QLog.v("str", "str=" + str);
 //                	QLog.v("str", "str=" + str.length());
                 }

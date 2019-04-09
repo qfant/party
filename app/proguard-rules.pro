@@ -29,4 +29,18 @@
 -keep class com.alipay.android.app.IRemoteServiceCallback$Stub{*;}
 -keep class com.alipay.sdk.app.PayTask{ public *;}
 -keep class com.alipay.sdk.app.AuthTask{ public *;}
- -keep class com.gyf.barlibrary.* {*;}
+-keep class com.gyf.barlibrary.* {*;}
+-keep class com.facebook.* {*;}
+-dontwarn com.facebook.**
+-keep class com.squareup.* {*;}
+-dontwarn com.squareup.**
+-keep class okhttp3.* {*;}
+-dontwarn okhttp3.**
+-keep class javax.annotation.* {*;}
+-dontwarn javax.**
+-keep class com.alibaba.* {*;}
+-dontwarn com.alibaba.**
+-dontwarn retrofit2.**
+-dontwarn okio.**
+-dontwarn android.net.**
+-keep class android.net.SSLCertificateSocketFactory{*;}
